@@ -1,54 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minecraft Encyclopedia</title>
     <meta
       name="description"
-      content="A comprehensive ecyclopedia for Minecraft mobs and items"
-    >
-    <meta name="author" content="Calvin Sanders" >
-    <meta
-      name="keywords"
-      content="minecraft, blocks, encyclopedia, gaming"
-    >
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+      content="A comprehensive encyclopedia for Minecraft mobs, items, biomes, and enchantments."
+    />
+    <meta name="author" content="Calvin Sanders" />
+    <meta name="keywords" content="minecraft, blocks, encyclopedia, gaming" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
     <a href="#main-content">Skip to main content</a>
+
     <header id="top">
       <h1>Minecraft Encyclopedia</h1>
       <p>Encyclopedia of all things Minecraft</p>
     </header>
-    <main>
-        <section class="search" aria-labelledby="search-heading">
-            <h2 id="search-heading">Search Items</h2>
-            <form id="form">
-                <label for="search-input">Item name</label>
-                <input type="search" id="search-input" name="search" placeholder="diamonds">
-                <button type="submit">Search</button>
-            </form>
-        </section>
 
-        <section class="results" aria-labelledby="results-heading">
-            <h2 id="results-heading">Items</h2>
-            <ul class="item-grid">
-                <li><button type="button" class="item-slot">Diamond</button></li>
-                <li><button type="button" class="item-slot">Iron Ingot</button></li>
-                <li><button type="button" class="item-slot">Oak Planks</button></li>
-            </ul>
-        </section>
+    <nav aria-label="Encyclopedia categories">
+      <ul class="category-nav">
+        <li>
+          <button type="button" data-category="mobs" aria-pressed="true">
+            Mobs
+          </button>
+        </li>
+        <li>
+          <button type="button" data-category="items" aria-pressed="false">
+            Items
+          </button>
+        </li>
+        <li>
+          <button type="button" data-category="biomes" aria-pressed="false">
+            Biomes
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-category="enchantments"
+            aria-pressed="false"
+          >
+            Enchantments
+          </button>
+        </li>
+      </ul>
+    </nav>
 
-        <article class="detail" aria-labelledby="detail-heading">
-            <h2 id="detail-heading">Diamond</h2>
-            <p class="detail-stats">Stack size: 64</p>
-            <p class="detail-description">Placeholder description</p>
-        </article>
+    <main id="main-content">
+      <section class="search" aria-labelledby="search-heading">
+        <h2 id="search-heading">Search Minecraft</h2>
+
+        <form id="form">
+          <label for="search-input">Search the encyclopedia</label>
+          <input
+            type="search"
+            id="search-input"
+            name="search"
+            placeholder="Search mobs, items, biomes, enchants..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <section class="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Mobs</h2>
+        <p id="results-status" role="status">Loading entries...</p>
+        <ul id="item-grid" class="item-grid"></ul>
+      </section>
+
+      <article class="detail" aria-labelledby="detail-heading">
+        <h2 id="detail-heading">Entry details</h2>
+        <div id="detail-content" aria-live="polite">
+          <p>Select an item to view its details.</p>
+        </div>
+      </article>
     </main>
 
     <footer class="site-footer">
-        <p>Not affiliated with Mojang or Microsoft. Data sourced from minecraft-data and Minecraft Wiki</p>
+      <a href="https://api.astroworldmc.com"> Powered by Astroworld API </a>
+      <p>Not affiliated with Mojang or Microsoft.</p>
     </footer>
-</body>
+  </body>
 </html>
